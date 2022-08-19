@@ -1,16 +1,22 @@
 <script>
+import newsService from '../services/NewsService.js'
 export default {
-  props: {
-    msg: {
-      type: String,
-      required: true
+  data() {
+    return {
+      msg: ''
     }
+  },
+  mounted() {
+    newsService.search({ q: 'war', pageSize: 10, page: 1 })
+      .then(json => this.msg = json)
   }
 }
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <pre>
+    {{ msg }}
+  </pre>
 </template>
 
 <style scoped>
