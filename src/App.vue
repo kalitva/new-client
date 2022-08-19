@@ -1,13 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import TopBar from '../src/components/TopBar.vue'
 </script>
 
 <template>
-  <header>
-    <div>
-      <hello-world msg="HELLOWORLD" />
-    </div>
-  </header>
+  <top-bar />
 </template>
 
 <style scoped>

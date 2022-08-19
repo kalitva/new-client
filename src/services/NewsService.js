@@ -1,7 +1,7 @@
 /*
  * docs: https://newsapi.org/docs/endpoints/top-headlines
  */
-export default new class {
+export default new class NewsService {
   constructor() {
     const headers = { 'X-Api-Key': 'eb529d35b87848f0b55cfd9ff538aaf8' }
 
