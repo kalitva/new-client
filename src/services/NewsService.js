@@ -20,6 +20,7 @@ export default new class NewsService {
     function doFetch(url) {
       return fetch(url, { headers })
         .then(r => r.json())
+        .then(json => json.articles)
     }
   }
 }

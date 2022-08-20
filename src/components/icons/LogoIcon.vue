@@ -23,7 +23,6 @@
 .corner {
   width: 13px;
   height: 13px;
-  cursor: pointer;
 }
 /*
 .blue-corner {

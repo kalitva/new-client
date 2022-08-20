@@ -1,13 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HelloWorld from '../components/HelloWorld.vue'
+import ArticleList from '../components/ArticleList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'hello-world',
-      component: HelloWorld
+      redirect: '/everything'
+    },
+    {
+      path: '/everything',
+      component: ArticleList
+    },
+    {
+      path: '/headlines',
+      component: ArticleList
     }
   ]
 })
