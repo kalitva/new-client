@@ -1,16 +1,10 @@
-<script>
-export default {
-  props: {
-    article: {
-      type: Object,
-      requred: true
-    }
-  },
-  methods: {
-    formatDate(date) {
-      return Intl.DateTimeFormat('default', { dateStyle: 'long' }).format(new Date(date))
-    }
-  }
+<script setup>
+defineProps({
+  article: { type: Object, requred: true }
+})
+
+function formatDate(date) {
+  return Intl.DateTimeFormat('default', { dateStyle: 'long' }).format(new Date(date))
 }
 </script>
 
@@ -44,7 +38,7 @@ export default {
 }
 
 .article__header {
-  padding: 1rem 2rem;
+  padding: 1.3rem 2rem;
   border-radius: 1rem 1rem 0 0;
   font-size: 1.5rem;
   text-align: center;

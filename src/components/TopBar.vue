@@ -1,8 +1,5 @@
-<script>
+<script setup>
 import LogoIcon from './icons/LogoIcon.vue'
-export default {
-  components: { LogoIcon }
-}
 </script>
 
 <template>
