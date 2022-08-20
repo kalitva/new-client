@@ -2,15 +2,17 @@ import newsService from '../services/NewsService'
 
 export default function serviceByRoute(route) {
   if (route.path === '/headlines') {
-    return (pageSize, page) => newsService.topHeadlines({
+    return (pageSize, page = 1) => newsService.topHeadlines({
       category: route.query.category,
+      country: 'us',
       pageSize,
       page
     })
   }
   if (route.path === '/everything') {
-    return (pageSize, page) => newsService.search({
+    return (pageSize, page = 1) => newsService.search({
       q: route.query.search,
+      language: 'en',
       pageSize,
       page
     })

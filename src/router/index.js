@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/everything'
+      redirect: '/headlines?category=general'
     },
     {
       path: '/everything',

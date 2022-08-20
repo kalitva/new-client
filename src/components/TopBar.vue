@@ -1,11 +1,14 @@
-<script setup>
+<script>
 import LogoIcon from './icons/LogoIcon.vue'
+export default {
+  components: { LogoIcon }
+}
 </script>
 
 <template>
   <header class="top-bar">
     <logo-icon/>
-    <h2 class="top-bar__header"><a href="/">Top Headlines</a></h2>
+    <h2 class="top-bar__header">Top Headlines</h2>
     <div class="top-bar__middle">
       <input class="top-bar__middle__search" type="text" autofocus placeholder="Search for news..." />
     </div>
@@ -14,9 +17,11 @@ import LogoIcon from './icons/LogoIcon.vue'
 
 <style scoped>
 .top-bar {
+  position: fixed;
   display: flex;
   align-items: center;
-  height: 6rem;
+  width: 100%;
+  height: var(--top-bar-height);
   background-color: var(--primary-color);
 }
 
@@ -25,15 +30,11 @@ import LogoIcon from './icons/LogoIcon.vue'
   color: white;
 }
 
-.top-bar__header:hover {
-  color: var(--secondary-color);
-  transition: color 1s;
-}
-
 .top-bar__middle {
   display: flex;
   justify-content: flex-end;
   width: var(--content-width);
+  margin: 0 auto;
 }
 
 .top-bar__middle__search {

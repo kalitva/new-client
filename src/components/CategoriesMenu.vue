@@ -1,18 +1,20 @@
 <script setup>
-
+function scrollTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 </script>
 
 <template>
   <nav class="categories">
-    <ul>
+    <ul style="position: fixed" @click="scrollTop">
+      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'general' }}">
+        <strong>General</strong>
+      </router-link>
       <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'business' }}">
         <strong>Business</strong>
       </router-link>
       <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'entertainment' }}">
         <strong>Entertainment</strong>
-      </router-link>
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'general' }}">
-        <strong>General</strong>
       </router-link>
       <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'health' }}">
         <strong>Health</strong>
@@ -29,9 +31,9 @@
 
 <style scoped>
 .categories {
-  max-width: 30rem;
+  margin-top: var(--top-bar-height);
+  width: 30rem;
   padding: 1rem 0;
-  border-right: 1px sorouter-linkd var(--primary-color);
   font-size: 1.5rem;
   color: var(--primary-font);
 }
@@ -54,6 +56,5 @@
 .categories__item:active {
   background-color: var(--accent-color);
   color: white;
-  transition: all 0.2s;
 }
 </style>

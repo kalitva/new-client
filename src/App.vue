@@ -16,6 +16,5 @@ import ExchangeRate from '../src/components/ExchangeRate.vue'
 <style scoped>
 .content {
   display: flex;
-  justify-content: space-between;
 }
 </style>
