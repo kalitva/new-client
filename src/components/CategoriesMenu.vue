@@ -1,4 +1,8 @@
 <script setup>
+import capitalize from '../utils/capitalize'
+
+const categories = ['general', 'business', 'entertainment', 'health', 'sports', 'technology']
+
 function scrollTop() {
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
@@ -7,23 +11,13 @@ function scrollTop() {
 <template>
   <nav class="categories">
     <ul style="position: fixed" @click="scrollTop">
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'general' }}">
-        <strong>General</strong>
-      </router-link>
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'business' }}">
-        <strong>Business</strong>
-      </router-link>
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'entertainment' }}">
-        <strong>Entertainment</strong>
-      </router-link>
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'health' }}">
-        <strong>Health</strong>
-      </router-link>
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'sports' }}">
-        <strong>Sports</strong>
-      </router-link>
-      <router-link class="categories__item" :to="{ path: '/headlines', query: { category: 'technology' }}">
-        <strong>Technology</strong>
+      <router-link
+        class="categories__item"
+        v-for="category in categories"
+        :key="category"
+        :to="{ path: '/headlines', query: { category }}"
+      >
+        <strong>{{ capitalize(category) }}</strong>
       </router-link>
     </ul>
   </nav>
