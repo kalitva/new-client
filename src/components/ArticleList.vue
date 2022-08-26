@@ -4,18 +4,34 @@ import ArticleItem from './ArticleItem.vue'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-const PAGE_SIZE = 50;
+const INNACURACY = 2
+const PAGE_SIZE = 10
+
 const $route = useRoute()
 
 const articles = ref([])
-//let page = 1;
+const page = ref(1)
 
-onMounted(() => updateNews($route))
+onMounted(() => {
+  updateNews($route)
+  window.onscroll = () => {
+    const { innerHeight, pageYOffset } = window
+    if ((innerHeight + pageYOffset) >= (document.body.offsetHeight - INNACURACY)) {
+      moreNews()
+    }
+  }
+})
 watch($route, updateNews)
 
 function updateNews(route) {
+  page.value = 1
   serviceByRoute(route)(PAGE_SIZE)
     .then(a => articles.value = a)
+}
+
+function moreNews() {
+  serviceByRoute($route)(PAGE_SIZE, ++page.value)
+    .then(as => articles.value = articles.value.concat(as))
 }
 </script>
 
