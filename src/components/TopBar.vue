@@ -1,5 +1,18 @@
 <script setup>
 import LogoIcon from './icons/LogoIcon.vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const $router = useRouter()
+
+const searchField = ref()
+
+function searchNews() {
+  $router.push({
+    path: 'everything',
+    query: { search: searchField.value.value }
+  })
+}
 </script>
 
 <template>
@@ -12,6 +25,8 @@ import LogoIcon from './icons/LogoIcon.vue'
           type="text"
           autofocus
           placeholder="Search for news..."
+          ref="searchField"
+          @keydown.enter="searchNews"
       />
     </div>
   </header>
@@ -28,7 +43,7 @@ import LogoIcon from './icons/LogoIcon.vue'
 }
 
 .top-bar__header {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   color: white;
 }
 

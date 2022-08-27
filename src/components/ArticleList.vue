@@ -25,6 +25,7 @@ onMounted(() => {
 watch($route, updateNews)
 
 function updateNews(route) {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
   page.value = 1
   serviceByRoute(route)(PAGE_SIZE)
     .then(a => articles.value = a)

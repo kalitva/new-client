@@ -2,10 +2,6 @@
 import capitalize from '../utils/capitalize'
 
 const categories = ['general', 'business', 'entertainment', 'health', 'sports', 'technology']
-
-function scrollTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
 </script>
 
 <template>
