@@ -11,12 +11,14 @@ export default new class NewsService {
       const url = new URL('https://newsapi.org/v2/top-headlines')
       url.search = new URLSearchParams(params)
       return cacheableHttpClient.get(url, { headers })
+        .then(json => json.articles)
     }
 
     this.search = function(params) {
       const url = new URL('https://newsapi.org/v2/everything')
       url.search = new URLSearchParams(params)
       return cacheableHttpClient.get(url, { headers })
+        .then(json => json.articles)
     }
   }
 }

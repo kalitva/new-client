@@ -8,8 +8,8 @@ export default new class CacheableHttpClient {
       return fetch(url, options)
         .then(r => r.json())
         .then(json =>  {
-          cacheItem(hash, JSON.stringify(json.articles))
-          return json.articles
+          cacheItem(hash, JSON.stringify(json))
+          return json
         })
     }
 

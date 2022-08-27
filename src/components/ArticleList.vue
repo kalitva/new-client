@@ -16,6 +16,7 @@ onMounted(() => {
   updateNews($route)
   window.onscroll = () => {
     const { innerHeight, pageYOffset } = window
+    // if the page srolled to bottom
     if ((innerHeight + pageYOffset) >= (document.body.offsetHeight - INNACURACY)) {
       moreNews()
     }
