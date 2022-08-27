@@ -8,7 +8,7 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "quotes": ["error", "single"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "max-len": ["error", 100, {
       "ignoreStrings": true,
       "ignoreUrls": true

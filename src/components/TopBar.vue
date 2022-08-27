@@ -12,6 +12,7 @@ function searchNews() {
     path: 'everything',
     query: { search: searchField.value.value }
   })
+  searchField.value.value = ''
 }
 </script>
 
