@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "quotes": ["error", "single"],
+    "max-len": ["error", 100, {
+      "ignoreStrings": true,
+      "ignoreUrls": true
+    }],
+    "indent": ["error", 2]
+  }
+}
