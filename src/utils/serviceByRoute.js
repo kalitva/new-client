@@ -1,4 +1,4 @@
-import newsService from '../services/NewsService'
+import newsService from '../services/newsService'
 
 export default function serviceByRoute(route) {
   if (route.path === '/headlines') {
