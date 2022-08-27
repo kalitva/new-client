@@ -7,7 +7,12 @@ import LogoIcon from './icons/LogoIcon.vue'
     <logo-icon/>
     <h2 class="top-bar__header">Top Headlines</h2>
     <div class="top-bar__middle">
-      <input class="top-bar__middle__search" type="text" autofocus placeholder="Search for news..." />
+      <input
+          class="top-bar__middle__search"
+          type="text"
+          autofocus
+          placeholder="Search for news..."
+      />
     </div>
   </header>
 </template>
@@ -23,7 +28,7 @@ import LogoIcon from './icons/LogoIcon.vue'
 }
 
 .top-bar__header {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: white;
 }
 
@@ -41,13 +46,13 @@ import LogoIcon from './icons/LogoIcon.vue'
   border-radius: 0.5rem;
   padding: 0.5rem;
   font-family: serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .top-bar__middle__search::placeholder {
   font-family: serif;
   font-style: italic;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: gray;
 }
 </style>

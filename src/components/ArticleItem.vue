@@ -40,7 +40,7 @@ function formatDate(date) {
 .article__header {
   padding: 1.3rem 2rem;
   border-radius: 1rem 1rem 0 0;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-align: center;
   background-color: var(--secondary-color);
 }
@@ -56,21 +56,21 @@ function formatDate(date) {
 
 .article__content__description {
   padding: 1rem 2rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--primary-font);
 }
 
 .article__content__caption {
   padding-right: 2rem;
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-align: right;
   color: var(--secondary-font);
 }
 
 .article__link {
   padding: 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-align: right;
   color: var(--accent-color);
 }

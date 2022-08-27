@@ -12,12 +12,12 @@ function scrollTop() {
   <nav class="categories">
     <ul style="position: fixed" @click="scrollTop">
       <router-link
-        class="categories__item"
-        v-for="category in categories"
-        :key="category"
-        :to="{ path: '/headlines', query: { category }}"
+          class="categories__item"
+          v-for="category in categories"
+          :key="category"
+          :to="{ path: '/headlines', query: { category }}"
       >
-        <strong>{{ capitalize(category) }}</strong>
+        {{ capitalize(category) }}
       </router-link>
     </ul>
   </nav>
@@ -28,13 +28,13 @@ function scrollTop() {
   margin-top: var(--top-bar-height);
   width: 30rem;
   padding: 1rem 0;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   color: var(--primary-font);
 }
 
 .categories__item {
   display: block;
-  padding: 0.5rem 2rem;
+  padding: 0.4rem 2rem;
   color: var(--primary-font);
   cursor: pointer;
 }
