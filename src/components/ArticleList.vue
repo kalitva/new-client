@@ -7,11 +7,13 @@ import { useRoute } from 'vue-router'
 const INNACURACY = 2
 const PAGE_SIZE = 10
 
+const $route = useRoute()
+
 const articles = ref([])
 const page = ref(1)
 
 onMounted(() => {
-  updateNews(useRoute())
+  updateNews($route)
   window.onscroll = () => {
     const { innerHeight, pageYOffset } = window
     // if the page srolled to bottom
@@ -20,7 +22,7 @@ onMounted(() => {
     }
   }
 })
-watch(useRoute(), updateNews)
+watch($route, updateNews)
 
 function updateNews(route) {
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -30,13 +32,12 @@ function updateNews(route) {
 }
 
 function moreNews() {
-  serviceByRoute(useRoute())(PAGE_SIZE, ++page.value)
+  serviceByRoute($route)(PAGE_SIZE, ++page.value)
     .then(as => articles.value = articles.value.concat(as))
 }
 </script>
 
 <template>
-  <h1>{{ PAGE_SIZE }}</h1>
   <section class="articles">
     <ul>
       <li v-for="(article, index) in articles" :key="index">
@@ -48,8 +49,9 @@ function moreNews() {
 
 <style scoped>
 .articles {
-  width: var(--content-width);
-  margin-top: var(--top-bar-height);
+  max-width: var(--content-width);
   padding: 1rem 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

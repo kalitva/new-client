@@ -21,11 +21,11 @@ function highlightQuery(description) {
 
 <template>
   <article class="article">
-    <h3 class="article__header" v-html="highlightQuery(article.title)" />
+    <h3 class="article__header" v-html="highlightQuery(article.title)"></h3>
     <div class="article__content">
       <img class="article__content__image" :src="article.urlToImage" />
       <div>
-        <p class="article__content__description" v-html="highlightQuery(article.description)" />
+        <p class="article__content__description" v-html="highlightQuery(article.description)"></p>
         <div class="article__content__caption">
           <div>
             <span>source: </span>
@@ -43,7 +43,7 @@ function highlightQuery(description) {
 
 <style scoped>
 .article {
-  margin-top: 3rem;
+  margin-bottom: 5rem;
   border-radius: 1rem;
   width: 100%;
 }
@@ -51,7 +51,7 @@ function highlightQuery(description) {
 .article__header {
   padding: 1.3rem 2rem;
   border-radius: 1rem 1rem 0 0;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-align: center;
   background-color: var(--secondary-color);
 }
@@ -67,7 +67,7 @@ function highlightQuery(description) {
 
 .article__content__description {
   padding: 1rem 2rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--primary-font);
 }
 

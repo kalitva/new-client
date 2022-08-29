@@ -6,7 +6,7 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
 
 <template>
   <nav class="categories">
-    <ul style="position: fixed" @click="scrollTop">
+    <ul style="position: fixed">
       <router-link
           class="categories__item"
           v-for="category in categories"
@@ -21,8 +21,6 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
 
 <style scoped>
 .categories {
-  margin-top: var(--top-bar-height);
-  width: 30rem;
   padding: 1rem 0;
   font-size: 1.35rem;
   color: var(--primary-font);

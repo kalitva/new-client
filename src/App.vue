@@ -7,14 +7,18 @@ import ExchangeRate from '../src/components/ExchangeRate.vue'
 <template>
   <top-bar />
   <div class="content">
-    <categories-menu />
-    <router-view />
-    <exchange-rate/>
+    <categories-menu class="column" />
+    <router-view class="column" />
+    <exchange-rate class="column" />
   </div>
 </template>
 
 <style scoped>
 .content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+.column {
+  margin-top: var(--top-bar-height);
 }
 </style>
