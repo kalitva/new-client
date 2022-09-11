@@ -1,5 +1,5 @@
 <script setup>
-import serviceByRoute from '../utils/serviceByRoute'
+import curryNewsService from '../provider/curryNewsService'
 import ArticleItem from './ArticleItem.vue'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -27,12 +27,12 @@ watch($route, updateNews)
 function updateNews(route) {
   window.scrollTo({ top: 0, behavior: 'smooth' })
   page.value = 1
-  serviceByRoute(route)(PAGE_SIZE)
+  curryNewsService(route)(PAGE_SIZE)
     .then(a => articles.value = a)
 }
 
 function moreNews() {
-  serviceByRoute($route)(PAGE_SIZE, ++page.value)
+  curryNewsService($route)(PAGE_SIZE, ++page.value)
     .then(as => articles.value = articles.value.concat(as))
 }
 </script>

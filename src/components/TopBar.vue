@@ -9,8 +9,8 @@ const searchField = ref()
 
 function searchNews() {
   $router.push({
-    path: 'everything',
-    query: { search: searchField.value.value }
+    path: 'search',
+    query: { q: searchField.value.value }
   })
   searchField.value.value = ''
 }

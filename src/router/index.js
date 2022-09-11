@@ -9,7 +9,7 @@ const router = createRouter({
       redirect: '/headlines?category=general'
     },
     {
-      path: '/everything',
+      path: '/search',
       component: ArticleList
     },
     {

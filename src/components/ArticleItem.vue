@@ -21,11 +21,11 @@ function highlightQuery(description) {
 
 <template>
   <article class="article">
-    <h3 class="article__header" v-html="highlightQuery(article.title)"></h3>
+    <h3 class="article__header" v-html="highlightQuery(article.title)" />
     <div class="article__content">
       <img class="article__content__image" :src="article.urlToImage" />
       <div>
-        <p class="article__content__description" v-html="highlightQuery(article.description)"></p>
+        <p class="article__content__description" v-html="highlightQuery(article.description)" />
         <div class="article__content__caption">
           <div>
             <span>source: </span>

@@ -18,3 +18,5 @@ coverage
 
 /cypress/videos/
 /cypress/screenshots/
+
+todo.txt

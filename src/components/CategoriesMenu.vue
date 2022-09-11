@@ -34,11 +34,7 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
 }
 
 .categories__item:hover {
-  background-color: var(--secondary-color);
-}
-
-.categories__item:visited {
-  color: inherit;
+  color: var(--accent-color);
 }
 
 .categories__item:active {
