@@ -5,13 +5,14 @@
 
 :root {
   font-size: 10px;
-  --content-width: 800px;
+  --content-width: 850px;
   --top-bar-height: 6rem;
 }
 
 :root {
   --primary-color: #0C073A;
   --secondary-color: #F3F3F3;
+  --secondary-lite: #F7F7F7;
   --primary-font: #262626;
   --secondary-font: gray;
   --accent-color: red;

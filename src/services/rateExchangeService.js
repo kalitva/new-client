@@ -7,13 +7,22 @@ export default new class RateExchangeService {
   constructor() {
     const apiKey = '3236a2ea13e81b9f316246bdf577a3cb6304baff'
 
-    this.course = (from, to) => {
+    this.course = async (from, to) => {
       const url = `https://api.getgeoapi.com/v2/currency/convert?api_key=${apiKey}&from=${from}&to=${to}`
-      return cacheableHttpClient.get(url)
+      const json = await cacheableHttpClient.get(url)
+      return Object.entries(json.rates)
+        .map(([code, currency]) => ({
+          code,
+          name: currency.currency_name,
+          rate: currency.rate
+        }))
     }
 
-    this.list = () => {
-      return cacheableHttpClient.get(`https://api.getgeoapi.com/v2/currency/list?api_key=${apiKey}`)
+    this.list = async () => {
+      const url = `https://api.getgeoapi.com/v2/currency/list?api_key=${apiKey}`
+      const json = await cacheableHttpClient.get(url)
+      return Object.entries(json.currencies)
+        .map(([code, name]) => ({ code, name }))
     }
   }
 }

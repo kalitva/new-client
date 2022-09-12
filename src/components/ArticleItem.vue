@@ -59,6 +59,7 @@ function highlightQuery(description) {
 .article__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
 }
 
 .article__content__image {
