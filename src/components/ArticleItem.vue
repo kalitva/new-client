@@ -10,7 +10,7 @@ function formatDate(date) {
 }
 
 function highlightQuery(description) {
-  const query = useRoute().query.search
+  const query = useRoute().query.q
   if (!query) {
     return description
   }
@@ -57,12 +57,12 @@ function highlightQuery(description) {
 }
 
 .article__content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .article__content__image {
-  max-width: 50%;
+  max-width: 100%;
 }
 
 .article__content__description {
