@@ -1,15 +1,22 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUpdated } from 'vue'
 import rateExchangeService from '../services/rateExchangeService'
 
 let currencyList = []
 let filteredCurrencies = ref([])
 const input = ref()
+const autocompleteList = ref()
 
 onMounted(() => {
   input.value.focus()
   rateExchangeService.list()
     .then(cs => currencyList = Object.freeze(cs))
+})
+onUpdated(function adjustSuggestionsByRightEdge() {
+  const rightX = autocompleteList.value.getBoundingClientRect().right
+  if (rightX > window.innerWidth) {
+    autocompleteList.value.style.right = 0
+  }
 })
 
 function filterCurrencies() {
@@ -29,12 +36,12 @@ function filterCurrencies() {
         @blur="$emit('close')"
         @keydown.escape="$emit('close')"
     />
-    <ul class="autocomplete__list">
+    <ul class="autocomplete__list" ref="autocompleteList">
       <li
           class="autocomplete__list__item"
           v-for="currency in filteredCurrencies"
           :key="currency.code"
-          @click="$emit('setCurrency', currency.code)"
+          @click="$emit('choose', currency.code)"
       >
         <strong class="autocomplete__list__item__code">{{ currency.code }}</strong>
         <span class="autocomplete__list__item__name">{{ currency.name }}</span>
@@ -55,10 +62,12 @@ function filterCurrencies() {
   width: 5rem;
   font-family: inherit;
   font-size: 1.5rem;
+  background-color: inherit;
 }
 
 .autocomplete__list {
   position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   background-color: white;
 }
 
@@ -66,7 +75,6 @@ function filterCurrencies() {
   display: flex;
   justify-content: space-between;
   column-gap: 3rem;
-  min-width: 15rem;
   padding: 0.2rem 1rem;
   cursor: pointer;
 }
@@ -81,5 +89,6 @@ function filterCurrencies() {
 
 .autocomplete__list__item__name {
   color: var(--secondary-font);
+  white-space: nowrap;
 }
 </style>

@@ -6,22 +6,27 @@ import CurrenciesAutocomplete from './CurrenciesAutocomplete.vue'
 const COMMA = ','
 const DELAY_BEFORE_CLOSE = 300
 
-const targets = ref(['USD', 'EUR', 'JPY', 'GBP', 'INR', 'RUB'])
+const currencies = ref(new Set(['USD', 'EUR', 'JPY', 'GBP', 'INR', 'RUB']))
 const base = ref('USD')
 const rates = ref([])
 const showBaseFrom = ref(false)
+const showAddCurrencyForm = ref(false)
 
 onMounted(() => updateRates())
-watch(targets.value, updateRates)
+watch(currencies.value, updateRates)
 watch(base, updateRates)
 
 function updateRates() {
-  rateExchangeService.course(base.value, targets.value.join(COMMA))
+  const to = Array.from(currencies.value).join(COMMA)
+  rateExchangeService.course(base.value, to)
     .then(rs => rates.value = rs.filter(r => r.code !== base.value))
 }
 
 function close() {
-  setTimeout(() => showBaseFrom.value = false, DELAY_BEFORE_CLOSE)
+  setTimeout(() => {
+    showBaseFrom.value = false
+    showAddCurrencyForm.value = false
+  }, DELAY_BEFORE_CLOSE)
 }
 </script>
 
@@ -36,7 +41,7 @@ function close() {
       <currencies-autocomplete
           v-if="showBaseFrom"
           @close="close"
-          @setCurrency="c => base = c"
+          @choose="c => base = c"
       />
     </div>
     <ul class="exchange__rates">
@@ -45,8 +50,13 @@ function close() {
         <div class="exchange__rates__rate__name">{{ rate.name }}</div>
         <div class="exchange__rates__rate__value">{{ Number(rate.rate).toFixed(2) }}</div>
       </li>
-      <li class="exchange__rates__add-rate" @click="targets.push('STN')">
-        <img src="src/assets/plus.svg" width="15" />
+      <li class="exchange__rates__add-rate" @click="showAddCurrencyForm = true">
+        <img src="src/assets/plus.svg" width="15" v-if="!showAddCurrencyForm" />
+        <currencies-autocomplete
+            v-if="showAddCurrencyForm"
+            @close="close"
+            @choose="c => currencies.add(c)"
+        />
       </li>
     </ul>
   </div>
