@@ -43,7 +43,7 @@ function highlightQuery(description) {
 
 <style scoped>
 .article {
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
   border-radius: 1rem;
   width: 100%;
 }
@@ -51,8 +51,9 @@ function highlightQuery(description) {
 .article__header {
   padding: 1.3rem 2rem;
   border-radius: 1rem 1rem 0 0;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   text-align: center;
+  color: var(--primary-font);
   background-color: var(--secondary-color);
 }
 

@@ -42,7 +42,7 @@ onMounted(() => {
 }
 
 .exchange__rates__rate__code {
-  padding: 0.5rem 0;
+  padding: 0.2rem 0;
   border-bottom: 3px solid white;
   border-radius: 1rem 1rem 0 0;
   font-size: 1.1rem;
@@ -50,13 +50,13 @@ onMounted(() => {
 }
 
 .exchange__rates__rate__name {
-  padding: 0.3rem;
+  padding: 0.1rem;
   color: var(--secondary-font);
 }
 
 .exchange__rates__rate__value {
-  padding: 1rem 0 0.5rem 0;
-  font-size: 1.5rem;
+  padding: 0.3rem 0;
+  font-size: 1.3rem;
   color: var(--accent-color);
 }
 </style>

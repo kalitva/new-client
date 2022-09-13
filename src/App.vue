@@ -19,6 +19,8 @@ import ExchangeRate from '../src/components/ExchangeRate.vue'
 .content {
   display: grid;
   grid-template-columns: 1fr 4fr 1.5fr;
+  max-width: 150rem;
+  margin: 0 auto;
 }
 
 .content__categories {
