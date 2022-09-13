@@ -21,7 +21,9 @@ function highlightQuery(description) {
 
 <template>
   <article class="article">
-    <h3 class="article__header" v-html="highlightQuery(article.title)" />
+    <h3 class="article__header">
+      <a :href="article.url" target="_blank">{{ article.title }}</a>
+    </h3>
     <div class="article__content">
       <img class="article__content__image" :src="article.urlToImage" />
       <div>
@@ -49,18 +51,18 @@ function highlightQuery(description) {
 }
 
 .article__header {
-  padding: 1.3rem 2rem;
-  border-radius: 1rem 1rem 0 0;
-  font-size: 1.8rem;
+  border-bottom: 1px solid var(--primary-font);
+  font-size: 2.5rem;
+  line-height: 3.5rem;
   text-align: center;
   color: var(--primary-font);
-  background-color: var(--secondary-color);
 }
 
 .article__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+  box-sizing: border-box;
+  padding: 1.5rem 2rem;
 }
 
 .article__content__image {
@@ -69,7 +71,7 @@ function highlightQuery(description) {
 
 .article__content__description {
   padding: 1rem 2rem;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--primary-font);
 }
 
