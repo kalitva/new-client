@@ -3,7 +3,7 @@ const DATE_AND_HOURS_LENGTH = 13;
 export default new class CacheableHttpClient {
   constructor() {
     this.get = function(url, options) {
-      const hash = url + new Date().toDateString().slice(0, DATE_AND_HOURS_LENGTH)
+      const hash = url + new Date().toISOString().slice(0, DATE_AND_HOURS_LENGTH)
       if (localStorage.getItem(hash)) {
         return new Promise(resolve => resolve(JSON.parse(localStorage.getItem(hash))))
       }
