@@ -64,14 +64,14 @@ function close() {
 
 <style>
 .exchange__header {
-  padding-top: 1rem;
+  margin-top: 2rem;
   text-align: center;
   font-weight: normal;
   font-style: italic;
 }
 
 .exchange__base {
-  padding: 1rem 0;
+  padding: 0.5rem 1rem;
 }
 
 .exchange__base__label {
@@ -90,7 +90,7 @@ function close() {
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: minmax(5rem, max-content);
   gap: 1rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
 }
 
 .exchange__rates__rate {

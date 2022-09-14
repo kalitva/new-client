@@ -33,7 +33,7 @@ function searchNews() {
   </header>
 </template>
 
-<style scoped>
+<style>
 .top-bar {
   position: fixed;
   display: flex;
@@ -44,7 +44,7 @@ function searchNews() {
 }
 
 .top-bar__header {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   color: white;
 }
 

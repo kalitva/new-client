@@ -40,12 +40,12 @@ function highlightQuery(description) {
     <div class="article__link">
       <a target="_blank" :href="article.url">Read more...</a>
     </div>
+    <div class="article__separator">* * *</div>
   </article>
 </template>
 
-<style scoped>
+<style>
 .article {
-  margin-bottom: 8rem;
   border-radius: 1rem;
   width: 100%;
 }
@@ -89,9 +89,13 @@ function highlightQuery(description) {
   text-align: right;
   color: var(--accent-color);
 }
-</style>
 
-<style>
+.article__separator {
+  margin: 4rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
 .article__highlight {
   background-color: yellow;
 }
