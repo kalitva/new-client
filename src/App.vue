@@ -3,37 +3,28 @@ import TopBar from '../src/components/TopBar.vue'
 import CategoriesMenu from '../src/components/CategoriesMenu.vue'
 import ExchangeRate from '../src/components/ExchangeRate.vue'
 import SideBarFeed from '../src/components/SideBarFeed.vue'
+import ScrollableColumn from '../src/components/ScrollableColumn.vue'
 </script>
 
 <template>
   <top-bar />
   <div class="content">
-    <nav class="content__categories ">
-      <categories-menu class="column" />
-    </nav>
-    <router-view class="column" />
-    <div class="column">
+    <categories-menu class="column" />
+    <scrollable-column>
+      <router-view />
+    </scrollable-column>
+    <scrollable-column>
       <exchange-rate />
       <side-bar-feed />
-    </div>
+    </scrollable-column>
   </div>
 </template>
 
 <style scoped>
 .content {
   display: grid;
-  grid-template-columns: 1fr 4fr 1.5fr;
+  grid-template-columns: 0.5fr 4fr 1.5fr;
   max-width: 150rem;
   margin: 0 auto;
-}
-
-.content__categories {
-  padding: 1rem 0;
-  font-size: 1.35rem;
-  color: var(--primary-font);
-}
-
-.column {
-  margin-top: var(--top-bar-height);
 }
 </style>

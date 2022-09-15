@@ -5,10 +5,10 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
 </script>
 
 <template>
-  <nav>
+  <nav class="categories">
     <ul style="position: fixed">
       <router-link
-          class="category"
+          class="categories__category"
           v-for="category in categories"
           :key="category"
           :to="{ path: '/headlines', query: { category }}"
@@ -20,7 +20,13 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
 </template>
 
 <style scoped>
-.category {
+.categories {
+  padding: 1rem 0;
+  font-size: 1.35rem;
+  color: var(--primary-font);
+}
+
+.categories__category {
   display: block;
   padding: 0.4rem 2rem;
   text-decoration: underline;
@@ -28,11 +34,11 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
   cursor: pointer;
 }
 
-.category:hover {
+.categories__category:hover {
   color: var(--accent-color);
 }
 
-.category:active {
+.categories__category:active {
   background-color: var(--accent-color);
   color: white;
 }
