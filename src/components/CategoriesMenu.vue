@@ -23,6 +23,7 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
 .category {
   display: block;
   padding: 0.4rem 2rem;
+  text-decoration: underline;
   color: var(--primary-font);
   cursor: pointer;
 }

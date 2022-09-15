@@ -2,6 +2,7 @@
 import TopBar from '../src/components/TopBar.vue'
 import CategoriesMenu from '../src/components/CategoriesMenu.vue'
 import ExchangeRate from '../src/components/ExchangeRate.vue'
+import SideBarFeed from '../src/components/SideBarFeed.vue'
 </script>
 
 <template>
@@ -11,7 +12,10 @@ import ExchangeRate from '../src/components/ExchangeRate.vue'
       <categories-menu class="column" />
     </nav>
     <router-view class="column" />
-    <exchange-rate class="column" />
+    <div class="column">
+      <exchange-rate />
+      <side-bar-feed />
+    </div>
   </div>
 </template>
 
