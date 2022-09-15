@@ -93,7 +93,7 @@ function highlightQuery(description) {
 .article__separator {
   margin: 4rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .article__highlight {

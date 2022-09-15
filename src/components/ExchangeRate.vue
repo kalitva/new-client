@@ -6,7 +6,7 @@ import CurrenciesAutocomplete from './CurrenciesAutocomplete.vue'
 const COMMA = ','
 const DELAY_BEFORE_CLOSE = 300
 
-const currencies = ref(new Set(['USD', 'EUR', 'JPY', 'GBP', 'INR', 'RUB']))
+const currencies = ref(new Set(['USD', 'EUR', 'JPY', 'GBP']))
 const base = ref('USD')
 const rates = ref([])
 const showBaseFrom = ref(false)
@@ -45,7 +45,13 @@ function close() {
       />
     </div>
     <ul class="exchange__rates">
-      <li class="exchange__rates__rate" v-for="rate in rates" :key="rate.code">
+      <li
+          class="exchange__rates__rate"
+          title="double click to delete"
+          v-for="rate in rates"
+          :key="rate.code"
+          @dblclick="currencies.delete(rate.code)"
+      >
         <h4 class="exchange__rates__rate__code">{{ rate.code }}</h4>
         <div class="exchange__rates__rate__name">{{ rate.name }}</div>
         <div class="exchange__rates__rate__value">{{ Number(rate.rate).toFixed(2) }}</div>
@@ -96,6 +102,7 @@ function close() {
 .exchange__rates__rate {
   border-radius: 1rem;
   text-align: center;
+  user-select: none;
   background-color: var(--secondary-color);
 }
 
