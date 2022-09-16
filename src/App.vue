@@ -9,8 +9,8 @@ import ScrollableColumn from '../src/components/ScrollableColumn.vue'
 <template>
   <top-bar />
   <div class="content">
-    <categories-menu class="column" />
-    <scrollable-column>
+    <categories-menu />
+    <scrollable-column :watchScroll="true">
       <router-view />
     </scrollable-column>
     <scrollable-column>

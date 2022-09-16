@@ -9,10 +9,10 @@ const DELAY_BEFORE_CLOSE = 300
 const currencies = ref(new Set(['USD', 'EUR', 'JPY', 'GBP']))
 const base = ref('USD')
 const rates = ref([])
-const showBaseFrom = ref(false)
+const showBaseForm = ref(false)
 const showAddCurrencyForm = ref(false)
 
-onMounted(() => updateRates())
+onMounted(updateRates)
 watch(currencies.value, updateRates)
 watch(base, updateRates)
 
@@ -24,7 +24,7 @@ function updateRates() {
 
 function close() {
   setTimeout(() => {
-    showBaseFrom.value = false
+    showBaseForm.value = false
     showAddCurrencyForm.value = false
   }, DELAY_BEFORE_CLOSE)
 }

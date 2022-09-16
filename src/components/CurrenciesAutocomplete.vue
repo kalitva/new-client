@@ -9,6 +9,7 @@ const autocompleteList = ref()
 
 onMounted(() => {
   input.value.focus()
+  // TODO should be run only once
   rateExchangeService.list()
     .then(cs => currencyList = Object.freeze(cs))
 })

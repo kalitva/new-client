@@ -3,28 +3,23 @@ import curryNewsService from '../provider/curryNewsService'
 import ArticleItem from './ArticleItem.vue'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useScrollEmmiter } from '../stores/scrollEmmiter'
 
-const INNACURACY = 2
 const PAGE_SIZE = 10
 
 const $route = useRoute()
-
+const scrollEmmiter = useScrollEmmiter()
 const articles = ref([])
 const page = ref(1)
 
 onMounted(() => {
   updateNews($route)
-  window.onscroll = () => {
-    const { innerHeight, pageYOffset } = window
-    // if the page srolled to bottom
-    if ((innerHeight + pageYOffset) >= (document.body.offsetHeight - INNACURACY)) {
-      moreNews()
-    }
-  }
+  scrollEmmiter.$onAction(moreNews)
 })
 watch($route, updateNews)
 
 function updateNews(route) {
+  // TODO
   window.scrollTo({ top: 0, behavior: 'smooth' })
   page.value = 1
   curryNewsService(route)(PAGE_SIZE)
