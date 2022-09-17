@@ -10,7 +10,7 @@ import ScrollableColumn from '../src/components/ScrollableColumn.vue'
   <top-bar />
   <div class="content">
     <categories-menu />
-    <scrollable-column :watchScroll="true" :id="'article-list'">
+    <scrollable-column :watchScrollToBottom="true" :id="'article-list'">
       <router-view />
     </scrollable-column>
     <scrollable-column :id="'side-bar-feed'">

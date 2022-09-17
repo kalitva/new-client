@@ -27,7 +27,7 @@ function updateNews(route) {
   scrollEmmiter.scrollToTop('article-list')
   page.value = 1
   curryNewsService(route)(PAGE_SIZE)
-    .then(a => articles.value = a)
+    .then(as => articles.value = as)
 }
 </script>
 

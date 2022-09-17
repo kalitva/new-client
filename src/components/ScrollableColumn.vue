@@ -9,12 +9,13 @@ const columnRef = ref()
 
 const props = defineProps({
   id: { type: String, required: true },
-  watchScroll: { type: Boolean, default: false }
+  watchScrollToBottom: { type: Boolean, default: false }
 })
 
 onMounted(() => {
   scrollEmmiter.$onAction(({ name, args }) => {
-    if (name === 'scrollToTop' && args[0] === props.id) {
+    const componentId = args[0]
+    if (name === 'scrollToTop' && componentId === props.id) {
       columnRef.value.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -24,7 +25,7 @@ onMounted(() => {
 })
 
 function emitIfGotToBottom() {
-  if (!props.watchScroll) {
+  if (!props.watchScrollToBottom) {
     return
   }
   const { offsetHeight, scrollTop, scrollHeight } = columnRef.value
