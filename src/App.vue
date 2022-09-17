@@ -10,10 +10,10 @@ import ScrollableColumn from '../src/components/ScrollableColumn.vue'
   <top-bar />
   <div class="content">
     <categories-menu />
-    <scrollable-column :watchScroll="true">
+    <scrollable-column :watchScroll="true" :id="'article-list'">
       <router-view />
     </scrollable-column>
-    <scrollable-column>
+    <scrollable-column :id="'side-bar-feed'">
       <exchange-rate />
       <side-bar-feed />
     </scrollable-column>

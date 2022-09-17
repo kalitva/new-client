@@ -1,19 +1,33 @@
 <script setup>
-import { useScrollEmmiter } from '../stores/scrollEmmiter.js'
+import { ref, onMounted } from 'vue'
+import { useScrollEmmiter } from '../stores/scrollEmmiter'
 
 const INNACURACY = 2
 
 const scrollEmmiter = useScrollEmmiter()
+const columnRef = ref()
 
 const props = defineProps({
+  id: { type: String, required: true },
   watchScroll: { type: Boolean, default: false }
 })
 
-function emitIfGotToBottom(event) {
+onMounted(() => {
+  scrollEmmiter.$onAction(({ name, args }) => {
+    if (name === 'scrollToTop' && args[0] === props.id) {
+      columnRef.value.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+  })
+})
+
+function emitIfGotToBottom() {
   if (!props.watchScroll) {
     return
   }
-  const { offsetHeight, scrollTop, scrollHeight } = event.target
+  const { offsetHeight, scrollTop, scrollHeight } = columnRef.value
   if ((offsetHeight + scrollTop) >= (scrollHeight - INNACURACY)) {
     scrollEmmiter.gotToBottom()
   }
@@ -22,7 +36,7 @@ function emitIfGotToBottom(event) {
 
 <template>
   <div class="column">
-    <div class="column__scrollable" @scroll="emitIfGotToBottom">
+    <div class="column__scrollable" @scroll="emitIfGotToBottom" ref="columnRef">
       <slot />
     </div>
   </div>

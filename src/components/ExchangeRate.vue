@@ -35,11 +35,11 @@ function close() {
     <h2 class="exchange__header">Rate exchange</h2>
     <div class="exchange__base">
       <label class="exchange__base__label"><em>Base</em>: </label>
-      <strong class="exchange__base__value" v-if="!showBaseFrom" @click="showBaseFrom = true">
+      <strong class="exchange__base__value" v-if="!showBaseForm" @click="showBaseForm = true">
         {{ base }}
       </strong>
       <currencies-autocomplete
-          v-if="showBaseFrom"
+          v-if="showBaseForm"
           @close="close"
           @choose="c => base = c"
       />

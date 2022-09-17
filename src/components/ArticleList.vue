@@ -14,21 +14,20 @@ const page = ref(1)
 
 onMounted(() => {
   updateNews($route)
-  scrollEmmiter.$onAction(moreNews)
+  scrollEmmiter.$onAction(({ name }) => {
+    if (name === 'gotToBottom') {
+      curryNewsService($route)(PAGE_SIZE, ++page.value)
+        .then(as => articles.value = articles.value.concat(as))
+    }
+  })
 })
 watch($route, updateNews)
 
 function updateNews(route) {
-  // TODO
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+  scrollEmmiter.scrollToTop('article-list')
   page.value = 1
   curryNewsService(route)(PAGE_SIZE)
     .then(a => articles.value = a)
-}
-
-function moreNews() {
-  curryNewsService($route)(PAGE_SIZE, ++page.value)
-    .then(as => articles.value = articles.value.concat(as))
 }
 </script>
 
