@@ -8,7 +8,14 @@ export default new class CacheableHttpClient {
         return new Promise(resolve => resolve(JSON.parse(localStorage.getItem(hash))))
       }
       return fetch(url, options)
-        .then(r => r.json())
+        .then(response => {
+          if (response.ok) {
+            return response
+          }
+          return response.json()
+            .then(json => Promise.reject(json))
+        })
+        .then(response => response.json())
         .then(json => {
           cacheItem(hash, JSON.stringify(json))
           return json
