@@ -1,6 +1,6 @@
 <script setup>
-import curryNewsService from '../utils/curryNewsService'
 import ArticleItem from './ArticleItem.vue'
+import { curryNewsService } from '../utils/curryNewsService'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollEmmiter } from '../stores/scrollEmmiter'

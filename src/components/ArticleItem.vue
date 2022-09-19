@@ -1,13 +1,10 @@
 <script setup>
+import { formatDate } from '../utils/formatDate'
 import { useRoute } from 'vue-router'
 
 defineProps({
   article: { type: Object, requred: true }
 })
-
-function formatDate(date) {
-  return Intl.DateTimeFormat('default', { dateStyle: 'long' }).format(new Date(date))
-}
 
 function highlightQuery(description) {
   const query = useRoute().query.q

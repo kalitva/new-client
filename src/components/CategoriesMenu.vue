@@ -1,5 +1,5 @@
 <script setup>
-import capitalize from '../utils/capitalize'
+import { capitalize } from '../utils/capitalize'
 
 const categories = ['general', 'business', 'entertainment', 'health', 'sports', 'technology']
 </script>

@@ -1,6 +1,6 @@
 import { newsService } from '../config/services'
 
-export default function curryNewsService(route) {
+export function curryNewsService(route) {
   if (route.path === '/headlines') {
     return (pageSize, page = 1) => newsService.headlines({
       category: route.query.category,
