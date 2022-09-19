@@ -14,7 +14,7 @@ const props = defineProps({
 
 onMounted(() => {
   scrollEmmiter.$onAction(({ name, args }) => {
-    const componentId = args[0]
+    const [componentId] = args
     if (name === 'scrollToTop' && componentId === props.id) {
       columnRef.value.scrollTo({
         top: 0,

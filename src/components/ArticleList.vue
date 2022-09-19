@@ -4,6 +4,7 @@ import ArticleItem from './ArticleItem.vue'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollEmmiter } from '../stores/scrollEmmiter'
+import { ComponentId } from '../config/components'
 
 const PAGE_SIZE = 10
 
@@ -24,7 +25,7 @@ onMounted(() => {
 watch($route, updateNews)
 
 function updateNews(route) {
-  scrollEmmiter.scrollToTop('article-list')
+  scrollEmmiter.scrollToTop(ComponentId.ARTICLE_LIST)
   page.value = 1
   curryNewsService(route)(PAGE_SIZE)
     .then(as => articles.value = as)

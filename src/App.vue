@@ -4,16 +4,17 @@ import CategoriesMenu from '../src/components/CategoriesMenu.vue'
 import ExchangeRate from '../src/components/ExchangeRate.vue'
 import SideBarFeed from '../src/components/SideBarFeed.vue'
 import ScrollableColumn from '../src/components/ScrollableColumn.vue'
+import { ComponentId } from '../src/config/components'
 </script>
 
 <template>
   <top-bar />
   <div class="content">
     <categories-menu />
-    <scrollable-column :watchScrollToBottom="true" :id="'article-list'">
+    <scrollable-column :watchScrollToBottom="true" :id="ComponentId.ARTICLE_LIST">
       <router-view />
     </scrollable-column>
-    <scrollable-column :id="'side-bar-feed'">
+    <scrollable-column :id="ComponentId.SIDE_BAR_FEED">
       <exchange-rate />
       <side-bar-feed />
     </scrollable-column>
