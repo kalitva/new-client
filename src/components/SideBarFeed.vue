@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import newsService from '../services/newsService'
+import { newsService } from '../config/services'
 
 const articles = ref([])
 
@@ -8,7 +8,7 @@ onMounted(async () => {
   articles.value = await newsService.search({
     language: 'en',
     q: 'ukraine',
-    pageSize: 50,
+    pageSize: 20,
     page: 1
   })
 })

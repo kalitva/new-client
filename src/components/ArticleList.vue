@@ -1,5 +1,5 @@
 <script setup>
-import curryNewsService from '../provider/curryNewsService'
+import curryNewsService from '../utils/curryNewsService'
 import ArticleItem from './ArticleItem.vue'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUpdated } from 'vue'
-import rateExchangeService from '../services/rateExchangeService'
+import { rateExchangeService } from '../config/services'
 
 let currencyList = []
 let filteredCurrencies = ref([])

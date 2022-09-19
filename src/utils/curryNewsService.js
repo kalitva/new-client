@@ -1,4 +1,4 @@
-import newsService from '../services/newsService'
+import { newsService } from '../config/services'
 
 export default function curryNewsService(route) {
   if (route.path === '/headlines') {

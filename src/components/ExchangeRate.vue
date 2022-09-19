@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
-import rateExchangeService from '../services/rateExchangeService'
 import CurrenciesAutocomplete from './CurrenciesAutocomplete.vue'
+import { onMounted, ref, watch } from 'vue'
+import { rateExchangeService } from '../config/services'
 
 const COMMA = ','
 const DELAY_BEFORE_CLOSE = 300
