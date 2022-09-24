@@ -4,12 +4,14 @@ import { curryNewsService } from '../utils/curryNewsService'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollEmmiter } from '../stores/scrollEmmiter'
+import { useErrorDispatcher } from '../stores/errorDispatcher'
 import { ComponentId } from '../config/components'
 
 const PAGE_SIZE = 10
 
 const $route = useRoute()
 const scrollEmmiter = useScrollEmmiter()
+const errorDispatcher = useErrorDispatcher()
 const articles = ref([])
 const page = ref(1)
 
@@ -19,6 +21,7 @@ onMounted(() => {
     if (name === 'gotToBottom') {
       curryNewsService($route)(PAGE_SIZE, ++page.value)
         .then(as => articles.value = articles.value.concat(as))
+        .catch(riseError)
     }
   })
 })
@@ -29,6 +32,11 @@ function updateNews(route) {
   page.value = 1
   curryNewsService(route)(PAGE_SIZE)
     .then(as => articles.value = as)
+    .catch(riseError)
+}
+
+function riseError(error) {
+  errorDispatcher.dispatch(error.message)
 }
 </script>
 
@@ -39,6 +47,7 @@ function updateNews(route) {
         <article-item :article="article" />
       </li>
     </ul>
+    <div class="articles__empty-set" v-if="!articles.length">Nothing found...</div>
   </section>
 </template>
 
@@ -49,5 +58,12 @@ function updateNews(route) {
   padding-top: 2rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.articles__empty-set {
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--secondary-font);
 }
 </style>

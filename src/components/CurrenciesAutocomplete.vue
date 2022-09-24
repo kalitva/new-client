@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted, onUpdated } from 'vue'
 import { rateExchangeService } from '../config/services'
+import { useErrorDispatcher } from '../stores/errorDispatcher'
 
+const errorDispatcher = useErrorDispatcher()
 let currencyList = []
-let filteredCurrencies = ref([])
+const filteredCurrencies = ref([])
 const input = ref()
 const autocompleteList = ref()
 
@@ -12,6 +14,7 @@ onMounted(() => {
   // TODO should be run only once
   rateExchangeService.list()
     .then(cs => currencyList = Object.freeze(cs))
+    .catch(e => errorDispatcher.riseError(e.detail))
 })
 onUpdated(function adjustSuggestionsByRightEdge() {
   const rightX = autocompleteList.value.getBoundingClientRect().right

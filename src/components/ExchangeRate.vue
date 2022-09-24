@@ -2,10 +2,12 @@
 import CurrenciesAutocomplete from './CurrenciesAutocomplete.vue'
 import { onMounted, ref, watch } from 'vue'
 import { rateExchangeService } from '../config/services'
+import { useErrorDispatcher } from '../stores/errorDispatcher'
 
 const COMMA = ','
 const DELAY_BEFORE_CLOSE = 300
 
+const errorDispatcher = useErrorDispatcher()
 const currencies = ref(new Set(['USD', 'EUR', 'JPY', 'GBP']))
 const base = ref('USD')
 const rates = ref([])
@@ -20,9 +22,11 @@ function updateRates() {
   const to = Array.from(currencies.value).join(COMMA)
   rateExchangeService.course(base.value, to)
     .then(rs => rates.value = rs.filter(r => r.code !== base.value))
+    .catch(e => errorDispatcher.dispatch(e.detail))
 }
 
 function close() {
+  // we need this delay to be able get click before dialog window is closed
   setTimeout(() => {
     showBaseForm.value = false
     showAddCurrencyForm.value = false
