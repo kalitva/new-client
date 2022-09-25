@@ -22,15 +22,15 @@ function highlightQuery(description) {
       <a :href="article.url" target="_blank">{{ article.title }}</a>
     </h3>
     <div class="article__content">
-      <img class="article__content__image" :src="article.urlToImage" />
+      <img class="article__content__image" :src="article.imgUrl" />
       <div>
-        <p class="article__content__description" v-html="highlightQuery(article.description)" />
+        <p class="article__content__description" v-html="highlightQuery(article.summary)" />
         <div class="article__content__caption">
           <div>
             <span>source: </span>
-            <strong>{{ article.source.name }}</strong>
+            <strong>{{ article.source }}</strong>
           </div>
-          <div><em>{{ formatDate(article.publishedAt) }}</em></div>
+          <div><em>{{ formatDate(article.publicationDate) }}</em></div>
         </div>
       </div>
     </div>

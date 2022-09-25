@@ -33,7 +33,8 @@ function close() {
             v-for="(message, index) in messages"
             :key="index"
         >
-          <strong>Error: </strong>{{ message }}</li>
+          <strong>Error: </strong>{{ message }}
+        </li>
       </ul>
     </div>
   </div>

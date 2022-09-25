@@ -1,7 +1,6 @@
 <script setup>
 import { capitalize } from '../utils/capitalize'
-
-const categories = ['general', 'business', 'entertainment', 'health', 'sports', 'technology']
+import { newsService } from '../config/services'
 </script>
 
 <template>
@@ -9,7 +8,7 @@ const categories = ['general', 'business', 'entertainment', 'health', 'sports', 
     <ul style="position: fixed">
       <router-link
           class="categories__category"
-          v-for="category in categories"
+          v-for="category in newsService.categories()"
           :key="category"
           :to="{ path: '/headlines', query: { category }}"
       >

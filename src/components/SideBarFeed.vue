@@ -22,8 +22,8 @@ onMounted(async () => {
         <h3 class="side__article__header">
           <a :href="article.url">{{ article.title }}</a>
         </h3>
-        <img class="side__article__image" :src="article.urlToImage" />
-        <p class="side__article__description">{{ article.description }}</p>
+        <img class="side__article__image" :src="article.imgUrl" />
+        <p class="side__article__description">{{ article.summary }}</p>
       </li>
     </ul>
   </aside>
