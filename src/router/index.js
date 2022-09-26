@@ -6,7 +6,7 @@ export const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/headlines?category=general'
+      redirect: '/headlines?category=business'
     },
     {
       path: '/search',

@@ -16,7 +16,7 @@ import { ComponentId } from '../src/config/components'
     <scrollable-column :watchScrollToBottom="true" :id="ComponentId.ARTICLE_LIST">
       <router-view />
     </scrollable-column>
-    <scrollable-column :id="ComponentId.SIDE_BAR_FEED">
+    <scrollable-column :watchScrollToBottom="true" :id="ComponentId.SIDE_BAR_FEED">
       <exchange-rate />
       <side-bar-feed />
     </scrollable-column>
