@@ -56,8 +56,6 @@ function riseError(error) {
   max-width: var(--content-width);
   padding: 1rem 2rem;
   padding-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .articles__empty-set {

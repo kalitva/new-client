@@ -26,7 +26,7 @@ import { ComponentId } from '../src/config/components'
 <style scoped>
 .content {
   display: grid;
-  grid-template-columns: 0.5fr 4fr 1.5fr;
+  grid-template-columns: 0.5fr 3.3fr 1.5fr;
   max-width: 150rem;
   margin: 0 auto;
 }
