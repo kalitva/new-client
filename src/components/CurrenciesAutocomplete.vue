@@ -86,7 +86,7 @@ function filterCurrencies() {
   justify-content: space-between;
   column-gap: 3rem;
   padding: 0.2rem 1rem;
-  cursor: pointer;
+  cursor: default;
 }
 
 .autocomplete__list__item:hover {

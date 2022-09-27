@@ -60,7 +60,7 @@ function close() {
 .error__dialog__close {
   display: inline-block;
   float: right;
-  padding: 0.3rem;
+  padding: 0.5rem;
   color: var(--primary-font);
   font-family: sans-serif;
   font-weight: bold;
