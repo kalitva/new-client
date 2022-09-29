@@ -61,7 +61,7 @@ function close() {
         <div class="exchange__rates__rate__value">{{ Number(rate.rate).toFixed(2) }}</div>
       </li>
       <li class="exchange__rates__add-rate" @click="showAddCurrencyForm = true">
-        <img src="src/assets/plus.svg" width="15" v-if="!showAddCurrencyForm" />
+        <img src="/src/assets/plus.svg" width="15" v-if="!showAddCurrencyForm" />
         <currencies-autocomplete
             v-if="showAddCurrencyForm"
             @close="close"

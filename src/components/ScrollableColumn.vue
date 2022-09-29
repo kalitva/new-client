@@ -55,7 +55,7 @@ function scrollToTop() {
           v-show="showScrollButton"
           :style="highlightScroll ? 'background-color: var(--secondary-color)' : ''"
       >
-        <img src="src/assets/arrow-up.svg" />
+        <img src="/src/assets/arrow-up.svg" />
       </div>
     </div>
     <div class="column__scrollable" @scroll="watchScrolling" ref="columnRef">
