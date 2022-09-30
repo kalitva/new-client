@@ -21,6 +21,8 @@ export class NewsApiOrgService {
       return ['business', 'entertainment', 'health', 'sports', 'technology']
     }
 
+    this.defaultPageSize = () => 20
+
     function doGet(url, params) {
       const urlWithParams = new URL(url)
       urlWithParams.search = new URLSearchParams({ ...params, language: 'en' })
@@ -32,7 +34,7 @@ export class NewsApiOrgService {
             imgUrl: a.urlToImage,
             summary: a.description,
             source: a.source.name,
-            publicationDate: a.publishedAt
+            publicationDate: new Date(a.publishedAt)
           }))
         })
     }

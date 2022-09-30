@@ -2,7 +2,7 @@ export class HttpClient {
   constructor() {
 
     this.get = (url, options) => {
-      return fetch(url, { options, mode: 'cors' })
+      return fetch(url, { ...options, mode: 'cors' })
         .then(response => {
           if (response.ok) {
             return response

@@ -1,13 +1,11 @@
 <script setup>
 import ArticleItem from './ArticleItem.vue'
-import { curryNewsService } from '../config/services'
+import { newsService, curryNewsService } from '../config/services'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollEmmiter } from '../stores/scrollEmmiter'
 import { useErrorDispatcher } from '../stores/errorDispatcher'
 import { ComponentId } from '../config/components'
-
-const PAGE_SIZE = 10
 
 const $route = useRoute()
 const scrollEmmiter = useScrollEmmiter()
@@ -19,7 +17,7 @@ onMounted(() => {
   updateNews($route)
   scrollEmmiter.$onAction(({ name }) => {
     if (name === 'gotToBottom') {
-      curryNewsService($route)(PAGE_SIZE, ++page.value)
+      curryNewsService($route)(newsService.defaultPageSize(), ++page.value)
         .then(as => articles.value = articles.value.concat(as))
         .catch(riseError)
     }
@@ -30,7 +28,7 @@ watch($route, updateNews)
 function updateNews(route) {
   scrollEmmiter.scrollToTop(ComponentId.ARTICLE_LIST)
   page.value = 1
-  curryNewsService(route)(PAGE_SIZE)
+  curryNewsService(route)(newsService.defaultPageSize())
     .then(as => articles.value = as)
     .catch(riseError)
 }

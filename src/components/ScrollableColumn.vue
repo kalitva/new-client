@@ -79,6 +79,7 @@ function scrollToTop() {
   padding: 0 0.5rem;
   cursor: pointer;
   transition: all 0.5s;
+  opacity: 0.7;
 }
 
 .column__scroll-up__button:hover {
