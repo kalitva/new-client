@@ -5,23 +5,31 @@ export class NewsApiOrgService {
   constructor(httpClient) {
     const headers = { 'X-Api-Key': 'eb529d35b87848f0b55cfd9ff538aaf8' }
 
-    this.findByCategory = params => {
-      return doGet('https://newsapi.org/v2/top-headlines', params)
+    this.getByCategory = (category, limit, offset) => {
+      return doGet('https://newsapi.org/v2/top-headlines', {
+        category,
+        pageSize: limit,
+        page: offset
+      })
     }
 
-    this.searchByQuery = params => {
-      return doGet('https://newsapi.org/v2/everything', params)
+    this.searchByQuery = (query, limit, offset) => {
+      return doGet('https://newsapi.org/v2/everything', {
+        q: query,
+        pageSize: limit,
+        page: offset
+      })
     }
 
-    this.getTopHeadlines = params => {
-      return this.findByCategory({ ...params, category: 'general' })
+    this.getTopHeadlines = (limit, offset) => {
+      return this.getByCategory('general', limit, offset)
     }
 
     this.categories = () => {
       return ['business', 'entertainment', 'health', 'sports', 'technology']
     }
 
-    this.defaultPageSize = () => 20
+    this.maxLimit = () => 100
 
     function doGet(url, params) {
       const urlWithParams = new URL(url)

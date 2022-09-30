@@ -1,6 +1,6 @@
 <script setup>
 import ArticleItem from './ArticleItem.vue'
-import { newsService, curryNewsService } from '../config/services'
+import { newsService } from '../config/services'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollEmmiter } from '../stores/scrollEmmiter'
@@ -11,13 +11,14 @@ const $route = useRoute()
 const scrollEmmiter = useScrollEmmiter()
 const errorDispatcher = useErrorDispatcher()
 const articles = ref([])
-const page = ref(1)
+const limit = Math.min(20, newsService.maxLimit())
+const offset = ref(1)
 
 onMounted(() => {
   updateNews($route)
   scrollEmmiter.$onAction(({ name }) => {
     if (name === 'gotToBottom') {
-      curryNewsService($route)(newsService.defaultPageSize(), ++page.value)
+      requestNews(++offset.value)
         .then(as => articles.value = articles.value.concat(as))
         .catch(riseError)
     }
@@ -25,12 +26,21 @@ onMounted(() => {
 })
 watch($route, updateNews)
 
-function updateNews(route) {
+function updateNews() {
   scrollEmmiter.scrollToTop(ComponentId.ARTICLE_LIST)
-  page.value = 1
-  curryNewsService(route)(newsService.defaultPageSize())
+  requestNews(offset.value = 1)
     .then(as => articles.value = as)
     .catch(riseError)
+}
+
+function requestNews(offset) {
+  if ($route.path === '/headlines') {
+    return newsService.getByCategory($route.query.category, limit, offset)
+  }
+  if ($route.path === '/search') {
+    return newsService.searchByQuery($route.query.q, limit, offset)
+  }
+  throw new Error('Should not be reached')
 }
 
 function riseError(error) {

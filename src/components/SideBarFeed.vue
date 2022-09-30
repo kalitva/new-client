@@ -3,20 +3,16 @@ import { onMounted, ref } from 'vue'
 import { newsService } from '../config/services'
 import { useScrollEmmiter } from '../stores/scrollEmmiter'
 
-const PAGE_SIZE = 10;
-
 const scrollEmmiter = useScrollEmmiter()
 const articles = ref([])
-const page = ref(1)
+const limit = Math.min(10, newsService.maxLimit())
+const offset = ref(1)
 
 onMounted(async () => {
-  const params = {
-    pageSize: PAGE_SIZE
-  }
-  articles.value = await newsService.getTopHeadlines(params)
+  articles.value = await newsService.getTopHeadlines(limit, 1)
   scrollEmmiter.$onAction(({ name }) => {
     if (name === 'gotToBottom') {
-      newsService.getTopHeadlines({ ...params, page: ++page.value })
+      newsService.getTopHeadlines(limit , ++offset.value)
         .then(as => articles.value = articles.value.concat(as))
     }
   })

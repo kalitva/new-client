@@ -1,15 +1,32 @@
-/**
- * These serve only as a hint to implement news api services
- */
+
+/*        --- These serve only as a hint to implement news api services ---       */
+
 interface NewsService {
 
-  findByCategory(params: any): Article[];
+  /**
+   * Get news articles by a category
+   */
+  getByCategory(category: string, limit: number, offset: number): Article[];
 
-  searchByQuery(params: any): Article[];
+  /**
+   * Get news articles by query
+   */
+  searchByQuery(query: string, limit: number, offset: number): Article[];
 
-  getTopHeadlines(params: any): Article[];
+  /**
+   * Get the most important news
+   */
+  getTopHeadlines(limit: number, offset: number): Article[];
 
-  defaultPageSize(): number;
+  /**
+   * List of available categories
+   */
+  categories(): string[]
+
+  /**
+   * The max count of results that may be returned at a time
+   */
+  maxLimit(): number;
 }
 
 interface Article {
