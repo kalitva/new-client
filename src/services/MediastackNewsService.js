@@ -35,7 +35,7 @@ export class MediastackNewsService {
           title: a.title,
           url: a.url,
           imgUrl: a.image,
-          summary: a.description.replace(/[...]/, ''),
+          summary: a.description,
           source: a.source,
           publishedAt: new Date(a.published_at)
         })))

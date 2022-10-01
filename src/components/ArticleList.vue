@@ -18,7 +18,7 @@ onMounted(() => {
   updateNews($route)
   scrollEmmiter.$onAction(({ name }) => {
     if (name === 'gotToBottom') {
-      requestNews(++offset.value)
+      curryRequest()(++offset.value)
         .then(as => articles.value = articles.value.concat(as))
         .catch(riseError)
     }
@@ -28,19 +28,17 @@ watch($route, updateNews)
 
 function updateNews() {
   scrollEmmiter.scrollToTop(ComponentId.ARTICLE_LIST)
-  requestNews(offset.value = 1)
+  curryRequest()(offset.value = 1)
     .then(as => articles.value = as)
     .catch(riseError)
 }
 
-function requestNews(offset) {
-  if ($route.path === '/headlines') {
-    return newsService.getByCategory($route.query.category, limit, offset)
+function curryRequest() {
+  const curried = {
+    '/headlines': offset => newsService.getByCategory($route.query.category, limit, offset),
+    '/search': offset => newsService.searchByQuery($route.query.q, limit, offset)
   }
-  if ($route.path === '/search') {
-    return newsService.searchByQuery($route.query.q, limit, offset)
-  }
-  throw new Error('Should not be reached')
+  return curried[$route.path]
 }
 
 function riseError(error) {
